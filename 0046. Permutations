@@ -1,0 +1,6 @@
+class Solution {
+
+	public List<List<Integer>> permute(int[] nums) {
+		return IntStream.range(0, nums.length).boxed().reduce(Arrays.asList(Arrays.asList()), (l, i) -> IntStream.range(0, l.size() * (1 + i)).mapToObj(j -> IntStream.range(0, 1 + i).mapToObj(k -> k < j % (1 + i) ? l.get(j / (1 + i)).get(k) : k > j % (1 + i) ? l.get(j / (1 + i)).get(k - 1) : nums[i]).collect(Collectors.toList())).collect(Collectors.toList()), (a, b) -> a);
+	}
+}
