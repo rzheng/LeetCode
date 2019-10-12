@@ -1,0 +1,6 @@
+class Solution {
+
+	public List<List<Integer>> subsets(int[] nums) {
+		return IntStream.range(0, 1 << nums.length).mapToObj(i -> IntStream.range(0, nums.length).filter(j -> (i & 1 << j) > 0).mapToObj(j -> nums[j]).collect(Collectors.toList())).collect(Collectors.toList());
+	}
+}
