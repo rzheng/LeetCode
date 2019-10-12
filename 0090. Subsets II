@@ -1,0 +1,6 @@
+class Solution {
+
+	public List<List<Integer>> subsetsWithDup(int[] nums) {
+		return new ArrayList<>(IntStream.range(0, 1 << nums.length).mapToObj(i -> IntStream.range(0, nums.length).filter(j -> (i & 1 << j) > 0).mapToObj(j -> nums[j]).sorted().collect(Collectors.toList())).collect(Collectors.toSet()));
+	}
+}
