@@ -1,0 +1,6 @@
+class Solution {
+
+	public List<List<String>> solveNQueens(int n) {
+		return IntStream.range(0, n).boxed().reduce(Arrays.asList(Arrays.<Integer>asList()), (l, i) -> IntStream.range(0, l.size() * (1 + i)).mapToObj(j -> IntStream.range(0, 1 + i).mapToObj(k -> k < j % (1 + i) ? l.get(j / (1 + i)).get(k) : k > j % (1 + i) ? l.get(j / (1 + i)).get(k - 1) : i).collect(Collectors.toList())).collect(Collectors.toList()), (a, b) -> a).stream().filter(m -> m.stream().collect(Collectors.toSet()).size() == n && IntStream.range(0, n).mapToObj(i -> i + m.get(i)).collect(Collectors.toSet()).size() == n && IntStream.range(0, n).mapToObj(i -> i - m.get(i)).collect(Collectors.toSet()).size() == n).map(m -> IntStream.range(0, n).mapToObj(i -> IntStream.range(0, n).mapToObj(j -> j == m.get(i) ? "Q" : ".").collect(Collectors.joining())).collect(Collectors.toList())).collect(Collectors.toList());
+	}
+}
