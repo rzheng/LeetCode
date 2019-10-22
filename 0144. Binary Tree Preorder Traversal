@@ -1,6 +1,6 @@
 class Solution {
 
-	public List<Integer> inorderTraversal(TreeNode root) {
-		return root == null ? Arrays.asList() : Stream.of(inorderTraversal(root.left).stream(), Stream.of(root.val), inorderTraversal(root.right).stream()).flatMap(t -> t).collect(Collectors.toList());
+	public List<Integer> preorderTraversal(TreeNode root) {
+		return root == null ? Arrays.asList() : Stream.of(Stream.of(root.val), preorderTraversal(root.left).stream(), preorderTraversal(root.right).stream()).flatMap(t -> t).collect(Collectors.toList());
 	}
 }
