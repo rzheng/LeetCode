@@ -1,0 +1,6 @@
+class Solution {
+
+	public List<Integer> postorderTraversal(TreeNode root) {
+		return root == null ? Arrays.asList() : Stream.of(postorderTraversal(root.left).stream(), postorderTraversal(root.right).stream(), Stream.of(root.val)).flatMap(t -> t).collect(Collectors.toList());
+	}
+}
