@@ -1,0 +1,6 @@
+class Solution {
+
+	public List<List<String>> findLadders(String beginWord, String endWord, List<String> wordList) {
+		return ((Set<List<String>>) IntStream.range(0, 99).boxed().reduce(new Set[] { Set.of(List.of(beginWord)), new HashSet(wordList) }, (t, u) -> t[1].contains(endWord) && t[1].removeAll(((Set<List>) (t[0] = ((Set<List<String>>) t[0]).stream().reduce(new HashSet(), (v, w) -> IntStream.range(0, endWord.length()).boxed().reduce(w.get(w.size() - 1).toCharArray(), (x, y) -> IntStream.range(0, 26).reduce(0, (l, r) -> (x[y] = (char) ((x[y] - 96) % 26 + 97)) > 0 & t[1].contains(new String(x)) && v.add(Stream.concat(w.stream(), Stream.of(new String(x))).collect(Collectors.toList())) ? l : l) > 0 ? x : x, (x, y) -> x)[0] > 0 ? v : v, (v, w) -> v))).stream().map(v -> v.get(v.size() - 1)).collect(Collectors.toSet())) ? t : t, (t, u) -> t)[0]).stream().filter(t -> t.contains(endWord)).collect(Collectors.toList());
+	}
+}
