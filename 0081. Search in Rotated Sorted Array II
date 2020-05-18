@@ -1,0 +1,6 @@
+class Solution {
+
+	public boolean search(int[] nums, int target) {
+		return Arrays.stream(nums).anyMatch(v -> v == target);
+	}
+}
