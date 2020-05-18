@@ -1,0 +1,6 @@
+class Solution {
+
+	public int longestCommonSubsequence(String text1, String text2) {
+		return IntStream.range(0, text1.length()).boxed().reduce(new int[text2.length() + 1], (t, u) -> IntStream.range(0, text2.length()).boxed().reduce(new int[text2.length() + 1], (v, w) -> (v[w + 1] = text1.charAt(u) == text2.charAt(w) ? 1 + t[w] : Math.max(t[w + 1], v[w])) > 0 ? v : v, (v, w) -> v), (t, u) -> t)[text2.length()];
+	}
+}
