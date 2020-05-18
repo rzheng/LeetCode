@@ -1,0 +1,6 @@
+class Solution {
+
+	public List<String> fizzBuzz(int n) {
+		return IntStream.range(1, n + 1).mapToObj(i -> (i % 3 > 0 ? "" : "Fizz") + (i % 5 > 0 ? "" : "Buzz") + (i % 3 > 0 && i % 5 > 0 ? i : "")).collect(Collectors.toList());
+	}
+}
