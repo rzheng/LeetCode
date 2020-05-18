@@ -1,0 +1,6 @@
+class Solution {
+
+	public String minWindow(String s, String t) {
+		return Stream.of(IntStream.range(0, s.length()).boxed().reduce(t.chars().boxed().reduce(new int[128], (u, v) -> (u[2] -= u[v]-- < 0 ? 0 : 1) > 0 ? u : u, (u, v) -> u), (u, v) -> (u[2] += ++u[s.charAt(v)] == 0 ? 1 : 0) < 0 ? u : IntStream.range(u[3], v + 1).boxed().reduce(u, (w, x) -> w[2] < 0 || (w[1] < 1 || v - x + 1 <= w[1] - w[0] ? (w[0] = x) + (w[1] = v + 1) : 0) > (w[3] = x + 1) + (w[2] -= w[s.charAt(x)]-- == 0 ? 1 : 0) ? w : w, (w, x) -> w), (u, v) -> u)).findAny().map(u -> s.substring(u[0], u[1])).get();
+	}
+}
