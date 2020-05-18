@@ -1,0 +1,6 @@
+class Solution {
+
+	public int maximalSquare(char[][] matrix) {
+		return IntStream.range(0, matrix.length).boxed().reduce(new int[999][999], (t, u) -> IntStream.range(0, matrix[u].length).reduce(0, (l, r) -> t[0][0] = Math.max(t[0][0], matrix[u][r] < 49 ? 0 : (t[u + 1][r + 1] = 1 + Math.min(t[u][r], Math.min(t[u + 1][r], t[u][++r]))) * t[u + 1][r])) > 0 ? t : t, (t, u) -> t)[0][0];
+	}
+}
