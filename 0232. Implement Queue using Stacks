@@ -1,0 +1,10 @@
+class MyQueue extends ArrayDeque<Integer> {
+
+	public void push(int x) {
+		add(x);
+	}
+
+	public boolean empty() {
+		return isEmpty();
+	}
+}
