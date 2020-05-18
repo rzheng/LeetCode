@@ -1,0 +1,10 @@
+class MinStack extends ArrayDeque<Integer> {
+
+	public int top() {
+		return peek();
+	}
+
+	public int getMin() {
+		return stream().mapToInt(v -> v).min().orElse(0);
+	}
+}
