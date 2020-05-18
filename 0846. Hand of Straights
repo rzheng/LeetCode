@@ -1,0 +1,6 @@
+class Solution {
+
+	public boolean isNStraightHand(int[] hand, int W) {
+		return Arrays.stream(hand).sorted().boxed().reduce(Arrays.stream(hand).boxed().reduce(new TreeMap<Integer, Integer>(), (t, u) -> t.put(u, 1 + t.getOrDefault(u, 0)) == null ? t : t, (t, u) -> t), (t, u) -> t.firstKey() < 0 || t.getOrDefault(u, 0) > 0 && IntStream.range(0, W).anyMatch(v -> t.put(u + v, t.getOrDefault(u + v, 0) - 1) == null | t.get(u + v) < 0) && t.put(-1, 0) == null ? t : t, (t, u) -> t).firstKey() >= 0;
+	}
+}
