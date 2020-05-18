@@ -1,0 +1,6 @@
+class Solution {
+
+	public int lengthOfLongestSubstring(String s) {
+		return IntStream.range(0, s.length()).boxed().reduce(new int[999], (t, u) -> (t[0] = Math.max(t[0], -(t[1] = Math.max(t[1], t[s.charAt(u)])) + (t[s.charAt(u)] = ++u))) > 0 ? t : t, (t, u) -> t)[0];
+	}
+}
