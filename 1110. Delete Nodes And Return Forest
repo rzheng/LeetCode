@@ -1,0 +1,6 @@
+class Solution {
+
+	public List<TreeNode> delNodes(TreeNode root, int[] to_delete) {
+		return root == null ? new ArrayList() : Stream.of(0).reduce(new List[] { delNodes(root.left, to_delete), delNodes(root.right, to_delete) }, (t, u) -> (Arrays.stream(to_delete).anyMatch(v -> v == root.val) || (t[0].isEmpty() || root.left != t[0].get(t[0].size() - 1) ? root.left = null : t[0].remove(t[0].size() - 1)) == (t[1].isEmpty() || root.right != t[1].get(t[1].size() - 1) ? root.right = null : t[1].remove(t[1].size() - 1)) | t[1].add(root)) & t[0].addAll(t[1]) ? t : t, (t, u) -> t)[0];
+	}
+}
