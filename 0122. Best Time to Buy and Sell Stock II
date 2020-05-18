@@ -1,0 +1,6 @@
+class Solution {
+
+	public int maxProfit(int[] prices) {
+		return IntStream.range(1, prices.length).map(operand -> Math.max(0, prices[operand] - prices[operand - 1])).sum();
+	}
+}
