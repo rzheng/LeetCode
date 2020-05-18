@@ -1,0 +1,6 @@
+class Solution {
+
+	public int openLock(String[] deadends, String target) {
+		return IntStream.range(1, 99).boxed().reduce(new Set[] { new HashSet(Set.of(0)), Set.of("0000"), new HashSet(List.of(deadends)) }, (t, u) -> t[1].isEmpty() && (t[0] = Set.of()) != null || t[1].contains(target) || t[0].add(u) & (t[1] = ((Set<String>) t[1]).stream().reduce(new HashSet<>(), (v, w) -> t[2].add(w) && IntStream.range(0, 4).boxed().reduce(w.toCharArray(), (x, y) -> (x[y] = (char) (++x[y] % 10 + 48)) > 0 & v.add(new String(x)) | (x[y] = (char) ((x[y] + 4) % 10 + 48)) > 0 & v.add(new String(x)) | (x[y] = (char) (++x[y] % 10 + 48)) > 0 ? x : x, (x, y) -> x)[0] > 0 ? v : v, (v, w) -> v)) == null ? t : t, (t, u) -> t)[0].size() - 1;
+	}
+}
