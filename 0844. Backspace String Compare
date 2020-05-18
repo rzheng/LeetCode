@@ -1,0 +1,6 @@
+class Solution {
+
+	public boolean backspaceCompare(String S, String T) {
+		return Stream.iterate(S, t -> t.replaceAll("[^#]#", "")).limit(99).skip(98).findAny().get().replaceAll("#", "").equals(Stream.iterate(T, t -> t.replaceAll("[^#]#", "")).limit(99).skip(98).findAny().get().replaceAll("#", ""));
+	}
+}
