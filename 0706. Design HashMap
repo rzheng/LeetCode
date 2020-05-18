@@ -1,0 +1,6 @@
+class MyHashMap extends HashMap<Integer, Integer> {
+
+    public int get(int key) {
+        return getOrDefault(key, -1);
+    }
+}
