@@ -1,0 +1,6 @@
+class Solution {
+
+    public int trap(int[] height) {
+        return IntStream.range(1, height.length).map(o -> Math.max(0, Math.min(Arrays.stream(height, 0, o).max().orElse(0),  Arrays.stream(height, o, height.length).max().orElse(0)) - height[o])).sum();
+    }
+}
