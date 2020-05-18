@@ -1,0 +1,6 @@
+class Solution {
+
+	public String largestNumber(int[] nums) {
+		return Arrays.stream(nums).mapToObj(n -> "" + n).sorted((a, b) -> (b + a).compareTo(a + b)).reduce((a, b) -> a.equals("0") ? b : a + b).get();
+	}
+}
