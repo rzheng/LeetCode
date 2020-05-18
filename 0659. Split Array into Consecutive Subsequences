@@ -1,0 +1,6 @@
+class Solution {
+
+	public boolean isPossible(int[] nums) {
+		return Arrays.stream(nums).boxed().reduce(Arrays.stream(nums).boxed().reduce(new int[99999], (t, u) -> t[u + 10003]++ > 0 ? t : t, (t, u) -> t), (t, u) -> t[0] > 0 || t[(t[1] = u) + 10003] == 0 || 0 * Stream.iterate(t[2] = 0, v -> t[t[1] + 10003]-- <= t[t[1] + 10004], v -> t[1]++ + t[2]++).count() + t[2] < 2 && (t[0] = 1) > 0 ? t : t, (t, u) -> t)[0] < 1;
+	}
+}
