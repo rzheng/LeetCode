@@ -1,0 +1,6 @@
+class MyStack extends Stack<Integer> {
+
+	public int top() {
+		return peek();
+	}
+}
