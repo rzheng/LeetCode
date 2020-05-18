@@ -1,0 +1,10 @@
+class RandomizedSet extends HashSet<Integer> {
+
+	public boolean insert(int val) {
+		return add(val);
+	}
+
+	public int getRandom() {
+		return (int) toArray()[new Random().nextInt(size())];
+	}
+}
