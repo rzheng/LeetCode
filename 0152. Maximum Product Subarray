@@ -1,0 +1,6 @@
+class Solution {
+
+	public int maxProduct(int[] nums) {
+		return IntStream.range(0, nums.length).boxed().reduce(new int[] { Integer.MIN_VALUE, 1, 1 }, (t, u) -> new int[] { Math.max(t[0], Math.max(t[1] * nums[u], t[2] * nums[nums.length - 1 - u])), nums[u] == 0 ? 1 : t[1] * nums[u], nums[nums.length - 1 - u] == 0 ? 1 : t[2] * nums[nums.length - 1 - u] }, (t, u) -> t)[0];
+	}
+}
