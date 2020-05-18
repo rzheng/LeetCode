@@ -1,0 +1,6 @@
+class Solution {
+
+	public int ladderLength(String beginWord, String endWord, List<String> wordList) {
+		return IntStream.range(1, 99).boxed().reduce(new Set[] { new HashSet<>(Set.of(0)), Set.of(beginWord), new HashSet<>(wordList) }, (t, u) -> t[1].isEmpty() && (t[0] = Set.of()) != null || t[1].contains(endWord) || t[0].add(u) & (t[1] = ((Set<String>) t[1]).stream().reduce(new HashSet<>(), (v, w) -> IntStream.range(0, w.length()).boxed().reduce(w.toCharArray(), (x, y) -> IntStream.range(0, 26).reduce(0, (l, r) -> (x[y] = (char) ((x[y] - 96) % 26 + 97)) > 0 & t[2].remove(new String(x)) && v.add(new String(x)) ? l : l) > 0 ? x : x, (x, y) -> x)[0] > 0 ? v : v, (v, w) -> v)) == null ? t : t, (t, u) -> t)[0].size();
+	}
+}
