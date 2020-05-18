@@ -1,0 +1,6 @@
+class Solution {
+
+	public int shortestSubarray(int[] A, int K) {
+		return IntStream.range(0, A.length + 1).boxed().reduce(IntStream.range(0, A.length).boxed().reduce(new int[999999], (t, u) -> (t[u + 4] = t[u + 3] + A[u]) > 0 ? t : t, (t, u) -> t), (t, u) -> Stream.iterate(t, v -> v[1] < v[2] && v[u + 3] - v[v[v[1] + 99999] + 3] >= K, v -> (v[0] = Math.min(v[0] > 0 ? v[0] : 99999, u - v[v[1]++ + 99999] + 1)) > 0 ? v : v).count() + Stream.iterate(t, v -> v[1] < v[2] && v[u + 3] <= v[v[v[2] + 99998] + 3], v -> v[2]-- > 0 ? v : v).count() > (t[t[2]++ + 99999] = u) ? t : t, (t, u) -> t)[0] - 1;
+	}
+}
