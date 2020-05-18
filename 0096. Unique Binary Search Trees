@@ -1,0 +1,6 @@
+class Solution {
+
+	public int numTrees(int n) {
+		return (int) (n < 3 ? n : numTrees(n - 1) * (4L * n - 2) / (n + 1));
+	}
+}
