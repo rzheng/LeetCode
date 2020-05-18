@@ -1,0 +1,6 @@
+class Solution {
+
+	public int longestStrChain(String[] words) {
+		return Arrays.stream(words).sorted((o, p) -> o.length() - p.length()).reduce(new HashMap<String, Integer>(), (t, u) -> t.put(u, IntStream.range(0, u.length()).map(o -> 1 + t.getOrDefault(u.substring(0, o) + u.substring(++o), 0)).max().orElse(0)) == null ? t : t, (t, u) -> t).values().stream().max((o, p) -> o - p).orElse(0);
+	}
+}
