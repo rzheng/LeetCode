@@ -1,0 +1,6 @@
+class Solution {
+
+	public int minAreaRect(int[][] points) {
+		return Arrays.stream(points).reduce(new HashSet<>(Set.of(List.of(points[0][0], points[0][1] + 0 * (points[0][0] = 99999999)))), (t, u) -> t.add(List.of(u[0], u[1])) ? t.stream().reduce(t, (v, w) -> u[0] != w.get(0) && u[1] != w.get(1) && t.containsAll(Set.of(List.of(u[0], w.get(1)), List.of(w.get(0), u[1]))) && (points[0][0] = Math.min(points[0][0], Math.abs((u[0] - w.get(0)) * (u[1] - w.get(1))))) > 0 ? v : v, (v, w) -> v) : t, (t, u) -> t).size() + points[0][0] < 99999999 ? points[0][0] : 0;
+	}
+}
