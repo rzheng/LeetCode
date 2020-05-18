@@ -1,0 +1,6 @@
+class Solution {
+
+	public List<String> binaryTreePaths(TreeNode root) {
+		return root == null ? Arrays.asList() : root.left == null && root.right == null ? Arrays.asList("" + root.val) : Stream.of(binaryTreePaths(root.left).stream(), binaryTreePaths(root.right).stream()).flatMap(t -> t).map(t -> root.val + "->" + t).collect(Collectors.toList());
+	}
+}
