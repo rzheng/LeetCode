@@ -1,0 +1,6 @@
+class Solution {
+
+	public int minDifficulty(int[] j, int d) {
+		return d > j.length ? -1 : IntStream.range(1, d).boxed().reduce(IntStream.range(1 - j.length, 1).boxed().reduce(new int[j.length + 1], (t, u) -> (t[-u] = Math.max(t[1 - u], j[-u])) > 0 ? t : t, (t, u) -> t), (t, u) -> IntStream.range(0, j.length - u).boxed().reduce(t, (v, w) -> IntStream.range(w - (t[j.length] = 0 * (v[w] = 9999)), j.length - u).boxed().reduce(v, (x, y) -> (x[w] = Math.min(x[w], x[y + 1] + (t[j.length] = Math.max(t[j.length], j[y])))) > 0 ? x : x, (x, y) -> x), (v, w) -> v), (t, u) -> t)[0];
+	}
+}
