@@ -1,0 +1,6 @@
+class Solution {
+
+	public int minDominoRotations(int[] A, int[] B) {
+		return (1 + Arrays.stream(IntStream.range(0, A.length).boxed().reduce(new int[4], (t, u) -> IntStream.range(0, 4).map(o -> t[o] < A.length && (o < 2 ? A : B)[u] != (o % 2 < 1 ? A : B)[0] ? (o > 1 ? A : B)[u] == (o % 2 < 1 ? A : B)[0] ? ++t[o] : A.length : t[o]).toArray(), (t, u) -> t)).min().orElse(0)) % (1 + A.length) - 1;
+	}
+}
