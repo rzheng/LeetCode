@@ -1,0 +1,6 @@
+class Solution {
+
+	public List<List<String>> suggestedProducts(String[] products, String searchWord) {
+		return IntStream.range(1, 1 + searchWord.length()).mapToObj(o -> Stream.of(products).sorted().filter(t -> t.startsWith(searchWord.substring(0, o))).limit(3).collect(Collectors.toList())).collect(Collectors.toList());
+	}
+}
