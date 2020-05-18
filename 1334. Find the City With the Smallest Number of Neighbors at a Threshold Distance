@@ -1,0 +1,6 @@
+class Solution {
+
+	public int findTheCity(int n, int[][] edges, int distanceThreshold) {
+		return Arrays.asList(Arrays.stream(IntStream.range(0, n).boxed().reduce(Arrays.stream(edges).reduce(IntStream.range(0, n).mapToObj(v -> IntStream.range(0, n).mapToObj(o -> o == v ? 0 : 9999).toArray(Integer[]::new)).toArray(Integer[][]::new), (t, u) -> (t[u[0]][u[1]] = t[u[1]][u[0]] = u[2]) > 0 ? t : t, (t, u) -> t), (t, u) -> IntStream.range(0, n).reduce(0, (l, r) -> IntStream.range(0, n).reduce(0, (m, s) -> t[r][s] = Math.min(t[r][s], t[r][u] + t[u][s]))) > 0 ? t : t, (t, u) -> t)).reduce((t, u) -> Arrays.stream(t).filter(v -> v <= distanceThreshold).count() < Arrays.stream(u).filter(v -> v <= distanceThreshold).count() ? t : u).orElse(new Integer[0])).indexOf(0);
+	}
+}
