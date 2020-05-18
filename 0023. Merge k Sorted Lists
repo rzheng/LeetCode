@@ -1,0 +1,6 @@
+class Solution {
+
+    public ListNode mergeKLists(ListNode[] lists) {
+        return Stream.of(lists).flatMap(t -> Stream.iterate(t, u -> u != null, u -> u.next)).sorted((t, u) -> u.val - t.val).reduce(null, (t, u) -> new ListNode(u.val, t));
+    }
+}
