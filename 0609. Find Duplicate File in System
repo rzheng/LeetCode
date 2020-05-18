@@ -1,0 +1,6 @@
+class Solution {
+
+	public List<List<String>> findDuplicate(String[] paths) {
+		return Arrays.stream(paths).flatMap(path -> Arrays.stream(path.split(" ")).skip(1).map(t -> path.split(" ")[0] + '/' + t)).collect(Collectors.groupingBy(t -> t.substring(t.indexOf('(')))).values().stream().filter(t -> t.size() > 1).map(t -> t.stream().map(s -> s.substring(0, s.indexOf('('))).collect(Collectors.toList())).collect(Collectors.toList());
+	}
+}
