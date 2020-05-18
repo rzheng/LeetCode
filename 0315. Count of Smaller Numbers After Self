@@ -1,0 +1,6 @@
+class Solution {
+
+	public List<Integer> countSmaller(int[] nums) {
+		return IntStream.range(1, nums.length + 1).mapToObj(v -> nums.length - v).reduce(new List[] { new ArrayList<>(), new ArrayList<>() }, (t, u) -> t[0].addAll(0, List.of((int) Math.abs(.1 + Collections.binarySearch(t[1], nums[u] - .1)))) & t[1].addAll((int) t[0].get(0), List.of((double) nums[u])) ? t : t, (t, u) -> t)[0];
+	}
+}
