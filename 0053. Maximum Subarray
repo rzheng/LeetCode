@@ -1,0 +1,6 @@
+class Solution {
+
+	public int maxSubArray(int[] nums) {
+		return IntStream.range(0, nums.length).map(operand -> operand == 0 ? nums[0] : (nums[operand] += Math.max(0, nums[operand - 1]))).max().orElse(0);
+	}
+}
