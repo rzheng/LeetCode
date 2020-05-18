@@ -1,0 +1,14 @@
+class Trie extends HashSet<String> {
+
+	public void insert(String word) {
+		add(word);
+	}
+
+	public boolean search(String word) {
+		return contains(word);
+	}
+
+	public boolean startsWith(String prefix) {
+		return stream().anyMatch(word -> word.startsWith(prefix));
+	}
+}
