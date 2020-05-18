@@ -1,0 +1,6 @@
+class Solution {
+
+	public int[] maxSlidingWindow(int[] nums, int k) {
+		return IntStream.range(0, nums.length + 1 - k).map(o -> Arrays.stream(nums, o, o + k).max().orElse(0)).toArray();
+	}
+}
