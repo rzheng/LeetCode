@@ -1,0 +1,6 @@
+class Solution {
+
+	public List<List<String>> groupAnagrams(String[] strs) {
+		return new ArrayList<>(Stream.of(strs).collect(Collectors.groupingBy(t -> Stream.of(t.split("")).sorted().collect(Collectors.joining()))).values());
+	}
+}
