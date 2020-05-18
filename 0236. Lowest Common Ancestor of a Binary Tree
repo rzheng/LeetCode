@@ -1,0 +1,6 @@
+class Solution {
+
+	public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+		return root == null || root == p || root == q ? root : (root.left = lowestCommonAncestor(root.left, p, q)) == null ? lowestCommonAncestor(root.right, p, q) : lowestCommonAncestor(root.right, p, q) == null ? root.left : root;
+	}
+}
