@@ -1,0 +1,18 @@
+class SnapshotArray extends ArrayList<HashMap<Integer, Integer>> {
+
+	public SnapshotArray(int length) {
+		add(new HashMap<>());
+	}
+
+	public void set(int index, int val) {
+		get(size() - 1).put(index, val);
+	}
+
+	public int snap() {
+		return add(new HashMap<>(get(size() - 1))) ? size() - 2 : 0;
+	}
+
+	public int get(int index, int snap_id) {
+		return get(snap_id).getOrDefault(index, 0);
+	}
+}
