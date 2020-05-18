@@ -1,0 +1,6 @@
+class Solution {
+
+	public boolean isHappy(int n) {
+		return IntStream.iterate(n, t -> ("" + t).chars().map(o -> (o - '0') * (o - '0')).sum()).limit(9).skip(8).sum() == 1;
+	}
+}
