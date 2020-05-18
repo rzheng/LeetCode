@@ -1,0 +1,6 @@
+class Solution {
+
+	public int splitArray(int[] nums, int m) {
+		return (int) Stream.iterate(new long[] { Arrays.stream(nums).max().orElse(0), -1 >>> 1 }, t -> Arrays.stream(nums).boxed().reduce(new int[2], (v, w) -> v[1] + w > (t[0] + t[1]) / 2 ? new int[] { v[0] + 1, w } : new int[] { v[0], v[1] + w }, (v, w) -> v)[0] < m ? new long[] { t[0], (t[0] + t[1]) / 2 } : new long[] { (t[0] + t[1]) / 2 + 1, t[1] }).limit(99).skip(98).findAny().get()[0];
+	}
+}
