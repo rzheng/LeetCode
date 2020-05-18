@@ -1,0 +1,6 @@
+class Solution {
+
+	public int maxEnvelopes(int[][] envelopes) {
+		return envelopes.length > 0 ? IntStream.range(0, envelopes.length).boxed().reduce(Arrays.stream(envelopes).sorted((o, p) -> o[0] == p[0] ? p[1] - o[1] : o[0] - p[0]).map(t -> new int[] { 0, t[1] }).toArray(t -> new int[envelopes.length][]), (t, u) -> (t[envelopes.length - 1][0] = Math.max(t[envelopes.length - 1][0], t[u][0] = 1 + Arrays.stream(t).limit(u).filter(v -> v[1] < t[u][1]).mapToInt(v -> v[0]).max().orElse(0))) > 0 ? t : t, (t, u) -> t)[envelopes.length - 1][0] : 0;
+	}
+}
