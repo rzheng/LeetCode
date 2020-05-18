@@ -1,0 +1,10 @@
+class SummaryRanges extends TreeSet<Integer> {
+
+	public void addNum(int val) {
+		add(val);
+	}
+
+	public int[][] getIntervals() {
+		return stream().reduce(Arrays.<int[]>asList(), (t, u) -> (t.isEmpty() || t.get(t.size() - 1)[1] + 1 != u ? Stream.concat(t.stream(), Stream.of(new int[] { u, u })) : Stream.concat(t.stream().limit(t.size() - 1), Stream.of(new int[] { t.get(t.size() - 1)[0], u }))).collect(Collectors.toList()), (t, u) -> t).toArray(new int[0][]);
+	}
+}
