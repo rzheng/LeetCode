@@ -1,0 +1,6 @@
+class Solution {
+
+	public Node connect(Node root) {
+		return root == null || (root.left == null || (root.left.next = root.right) == null)  & (root.right == null | root.next == null || (root.right.next = root.next.left) == null) & connect(root.left) == connect(root.right) ? root : root;
+	}
+}
