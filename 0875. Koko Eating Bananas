@@ -1,0 +1,6 @@
+class Solution {
+
+    public int minEatingSpeed(int[] piles, int H) {
+        return IntStream.range(0, 99).boxed().reduce(new int[] { 1, 99999, 0 }, (t, u) -> Arrays.stream(piles).map(o -> (--o + (t[2] = t[0] + t[1] >> 1)) / t[2]).sum() > H ? new int[] { t[2], t[1], 0 } : new int[] { t[0], t[2], 0 }, (t, u) -> t)[1];
+    }
+}
