@@ -1,0 +1,6 @@
+class Solution {
+
+    public int countBattleships(char[][] board) {
+        return IntStream.range(0, board.length).map(v -> IntStream.range(0, board[0].length).map(o -> board[v][o] == '.' || v > 0 && board[v - 1][o] == 'X' || o-- > 0 && board[v][o] == 'X' ? 0 : 1).sum()).sum();
+    }
+}
