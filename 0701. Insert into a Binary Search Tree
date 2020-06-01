@@ -1,0 +1,6 @@
+class Solution {
+
+    public TreeNode insertIntoBST(TreeNode root, int val) {
+        return root == null ? new TreeNode(val) : val < root.val && (root.left = insertIntoBST(root.left, val)) != null || (root.right = insertIntoBST(root.right, val)) == null ? root : root;
+    }
+}
