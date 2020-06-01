@@ -1,0 +1,6 @@
+class Solution {
+
+    public int firstMissingPositive(int[] nums) {
+        return Stream.iterate(1, t -> ++t).filter(u -> Arrays.stream(nums).noneMatch(v -> v == u)).findAny().get();
+    }
+}
