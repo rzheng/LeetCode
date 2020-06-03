@@ -1,6 +1,6 @@
 class Solution {
 
-	public int kthSmallest(TreeNode root, int k) {
-		return Stream.of(0).reduce(new int[2], (t, u) -> (t[0] = root == null ? -1 : (t[0] = kthSmallest(root.left, k)) < 0 ? -t[0] < k ? (t[1] = kthSmallest(root.right, k + t[0])) < 0 ? t[0] + t[1] : t[1] : root.val : t[0]) > 0 ? t : t, (t, u) -> t)[0];
-	}
+    public int kthSmallest(TreeNode root, int k) {
+        return Stream.of(0).reduce(0, (t, u) -> (t = root == null ? -1 : (t = kthSmallest(root.left, k)) < 0 ? -t < k ? (u = kthSmallest(root.right, k + t)) < 0 ? t + u : u : root.val : t) > 0 ? t : t, (t, u) -> t);
+    }
 }
