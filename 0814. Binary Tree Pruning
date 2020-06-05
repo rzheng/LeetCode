@@ -1,0 +1,6 @@
+class Solution {
+
+    public TreeNode pruneTree(TreeNode root) {
+        return root == null || (root.left = pruneTree(root.left)) == null & (root.right = pruneTree(root.right)) == null && root.val < 1 ? null : root;
+    }
+}
