@@ -1,0 +1,10 @@
+class Codec extends ArrayList<TreeNode> {
+
+    public String serialize(TreeNode root) {
+        return "" + add(root);
+    }
+
+    public TreeNode deserialize(String data) {
+        return get(0);
+    }
+}
