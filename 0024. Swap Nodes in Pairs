@@ -1,0 +1,6 @@
+class Solution {
+
+    public ListNode swapPairs(ListNode head) {
+        return head == null || head.next == null || (head.val ^= head.next.val ^ (head.next.val = head.val)) > 0 | swapPairs(head.next.next) == null ? head : head;
+    }
+}
