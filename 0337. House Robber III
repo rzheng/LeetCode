@@ -1,0 +1,6 @@
+class Solution {
+
+    public int rob(TreeNode root) {
+        return root == null ? 0 : Math.max(rob(root.left) + rob(root.right), root.val + (root.left == null ? 0 : rob(root.left.left) + rob(root.left.right)) + (root.right == null ? 0 : rob(root.right.left) + rob(root.right.right)));
+    }
+}
