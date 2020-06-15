@@ -1,6 +1,6 @@
 class Solution {
 
-	public ListNode sortList(ListNode head) {
-		return Stream.iterate(head, t -> t != null, t -> t.next).sorted((t, u) -> u.val - t.val).reduce(null, (t, u) -> new ListNode(u.val, t));
-	}
+    public ListNode sortList(ListNode head) {
+        return Stream.iterate(head, t -> t != null, t -> t.next).sorted((t, u) -> u.val - t.val).reduce(null, (t, u) -> new ListNode(u.val, t));
+    }
 }
