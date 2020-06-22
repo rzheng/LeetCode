@@ -1,0 +1,14 @@
+class PeekingIterator extends ArrayDeque<Integer> {
+
+    public PeekingIterator(Iterator<Integer> iterator) {
+        iterator.forEachRemaining(this::add);
+    }
+
+    public Integer next() {
+        return pop();
+    }
+
+    public boolean hasNext() {
+        return !isEmpty();
+    }
+}
