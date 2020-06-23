@@ -1,0 +1,10 @@
+class TimeMap extends HashMap<String, TreeMap<Integer, String>> {
+
+    public void set(String key, String value, int timestamp) {
+        computeIfAbsent(key, t -> new TreeMap<>(Map.of(0, ""))).put(timestamp, value);
+    }
+
+    public String get(String key, int timestamp) {
+        return getOrDefault(key, new TreeMap<>(Map.of(0, ""))).floorEntry(timestamp).getValue();
+    }
+}
