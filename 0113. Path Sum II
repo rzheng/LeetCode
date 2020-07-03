@@ -1,6 +1,6 @@
 class Solution {
 
-	public List<List<Integer>> pathSum(TreeNode root, int sum) {
-		return root == null ? Arrays.asList() : root.left == null && root.right == null ? sum == root.val ? Arrays.asList(Arrays.asList(root.val)) : Arrays.asList() : Stream.of(pathSum(root.left, sum - root.val).stream(), pathSum(root.right, sum - root.val).stream()).flatMap(t -> t).map(t -> Stream.of(Stream.of(root.val), t.stream()).flatMap(s -> s).collect(Collectors.toList())).collect(Collectors.toList());
-	}
+    public List<List<Integer>> pathSum(TreeNode root, int sum) {
+        return root == null ? List.of() : root.left == null && root.right == null && sum == root.val ? List.of(List.of(root.val)) : Stream.of(pathSum(root.left, sum - root.val).stream(), pathSum(root.right, sum - root.val).stream()).flatMap(t -> t).map(t -> Stream.of(Stream.of(root.val), t.stream()).flatMap(s -> s).collect(Collectors.toList())).collect(Collectors.toList());
+    }
 }
