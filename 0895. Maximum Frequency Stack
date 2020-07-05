@@ -1,0 +1,10 @@
+class FreqStack extends TreeMap<Integer, ArrayDeque<Integer>> {
+
+    public boolean push(int x) {
+        return computeIfAbsent(x, t -> new ArrayDeque(Set.of(0))).add(1 + get(x).getLast()) | computeIfAbsent(-get(x).getLast(), t -> new ArrayDeque()).add(x);
+    }
+
+    public int pop() {
+        return (0 * get(get(firstKey()).getLast()).pollLast() + get(firstKey()).size() > 1 ? get(firstKey()) : remove(firstKey())).pollLast();
+    }
+}
