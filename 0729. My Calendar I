@@ -1,0 +1,6 @@
+class MyCalendar extends TreeMap<Integer, Integer> {
+
+    public boolean book(int start, int end) {
+        return (lowerKey(end) == null || get(lowerKey(end)) <= start) && put(start, end) == null;
+    }
+}
