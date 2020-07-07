@@ -1,0 +1,6 @@
+class Solution {
+
+    public int rangeSumBST(TreeNode root, int L, int R) {
+        return root == null ? 0 : (root.val < L || root.val > R ? 0 : root.val) + rangeSumBST(root.left, L, R) + rangeSumBST(root.right, L, R);
+    }
+}
