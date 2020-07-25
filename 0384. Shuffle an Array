@@ -1,0 +1,14 @@
+class Solution extends ArrayList<List<Integer>> {
+
+    public Solution(int[] nums) {
+        super(List.of(IntStream.of(nums).mapToObj(v -> v).collect(Collectors.toList()), IntStream.of(nums).mapToObj(v -> v).collect(Collectors.toList())));
+    }
+
+    public int[] reset() {
+        return get(1).stream().mapToInt(v -> v).toArray();
+    }
+
+    public int[] shuffle() {
+        return Stream.of(0).peek(t -> Collections.shuffle(get(0))).map(t -> get(0)).findAny().get().stream().mapToInt(v -> v).toArray();
+    }
+}
