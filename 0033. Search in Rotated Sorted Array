@@ -1,0 +1,6 @@
+class Solution {
+
+    public int search(int[] nums, int target) {
+        return IntStream.of(nums).boxed().collect(Collectors.toList()).indexOf(target);
+    }
+}
