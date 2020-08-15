@@ -1,0 +1,6 @@
+class Solution {
+
+    public int minSteps(String s, String t) {
+        return IntStream.of(IntStream.range(0, s.length()).boxed().reduce(new int[999], (u, v) -> u[s.charAt(v)]++ == u[t.charAt(v)]-- ? u : u, (u, v) -> u)).map(Math::abs).sum() / 2;
+    }
+}
