@@ -1,0 +1,6 @@
+class Solution {
+
+    public int integerBreak(int n) {
+        return n < 4 ? --n : (int) Math.pow(3, n / 3 - 1) * new int[] { 3, 4, 6 }[n % 3];
+    }
+}
