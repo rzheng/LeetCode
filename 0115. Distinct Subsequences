@@ -1,0 +1,6 @@
+class Solution {
+
+    public int numDistinct(String s, String t) {
+        return IntStream.range(0, s.length()).boxed().reduce(new int[t.length()], (u, v) -> IntStream.range(1 - t.length(), 1).boxed().reduce(u, (w, x) -> (w[-x] += s.charAt(v) == t.charAt(-x) ? x < 0 ? w[-x - 1] : 1 : 0) > 0 ? w : w, (w, x) -> w), (u, v) -> u)[t.length() - 1];
+    }
+}
