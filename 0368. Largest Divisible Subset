@@ -1,0 +1,6 @@
+class Solution {
+
+    public List<Integer> largestDivisibleSubset(int[] nums) {
+        return IntStream.of(nums).sorted().boxed().reduce(new ArrayList<List<Integer>>(), (t, u) -> t.add(Stream.concat(Stream.of(u), t.stream().filter(v -> u % v.get(0) == 0).max((o, p) -> o.size() - p.size()).orElse(List.of()).stream()).collect(Collectors.toList())) ? t : t, (t, u) -> t).stream().max((o, p) -> o.size() - p.size()).orElse(List.of());
+    }
+}
