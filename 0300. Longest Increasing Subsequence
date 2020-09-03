@@ -1,0 +1,6 @@
+class Solution {
+
+    public int lengthOfLIS(int[] nums) {
+        return IntStream.of(IntStream.range(0, nums.length).boxed().reduce(new int[nums.length], (t, u) -> (t[u] = IntStream.range(0, u).map(o -> nums[o] < nums[u] ? t[o] + 1 : 1).max().orElse(1)) > 0 ? t : t, (t, u) -> t)).max().orElse(0);
+    }
+}
