@@ -1,0 +1,6 @@
+class Solution {
+
+    public List<String> subdomainVisits(String[] cpdomains) {
+        return Stream.of(cpdomains).map(t -> t.split(" ")).flatMap(t -> IntStream.range(0, t[1].length()).filter(i -> i < 1 || t[1].charAt(--i) == '.').mapToObj(v -> t[1].substring(v)).map(u -> new String[] { u, t[0] })).collect(Collectors.toMap(t -> t[0], t -> Integer.valueOf(t[1]), (t, u) -> t + u)).entrySet().stream().map(t -> t.getValue() + " " + t.getKey()).collect(Collectors.toList());
+    }
+}
