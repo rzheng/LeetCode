@@ -1,0 +1,6 @@
+class Solution {
+
+    public int rob(int[] nums) {
+        return IntStream.range(0, nums.length).map(o -> nums[o] += Arrays.stream(nums, 0, o > 0 ? --o : o).max().orElse(0)).max().orElse(0);
+    }
+}
