@@ -1,6 +1,6 @@
 class Solution {
 
     public int numDecodings(String s) {
-        return s.chars().boxed().reduce(new int[] { 1, 0, 0 }, (t, u) -> new int[] { (u > 48 ? t[0] : 0) + (t[2] > 48 && t[2] * 10 + u < 555 ? t[1] : 0), t[0], u }, (t, u) -> t)[0];
+        return s.chars().boxed().reduce(new int[] { 1, 0, 0 }, (t, u) -> new int[] { (u > 48 ? t[0] : 0) + (t[2] > 48 & t[2] * 10 + u < 555 ? t[1] : 0), t[0], u }, (t, u) -> t)[0];
     }
 }
