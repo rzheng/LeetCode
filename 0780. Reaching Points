@@ -1,0 +1,6 @@
+class Solution {
+
+    public boolean reachingPoints(int sx, int sy, int tx, int ty) {
+        return sx <= tx & sy <= ty && sx - tx == (ty - sy) % tx | reachingPoints(sy, sx, tx > ty ? ty : ty % tx, tx);
+    }
+}
