@@ -1,0 +1,6 @@
+class Solution extends HashMap<String, int[]> {
+
+    public int maxFreq(String s, int maxLetters, int minSize, int maxSize) {
+        return IntStream.range(0, s.length() - minSize + 1).mapToObj(v -> s.substring(v, v + minSize)).filter(t -> t.chars().distinct().count() <= maxLetters).mapToInt(v -> ++computeIfAbsent(v, t -> new int[1])[0]).max().orElse(0);
+    }
+}
