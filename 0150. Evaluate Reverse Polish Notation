@@ -1,0 +1,6 @@
+class Solution extends Stack<Integer> {
+
+    public int evalRPN(String[] tokens) {
+        return Stream.of(tokens).mapToInt(v -> push(v.equals("+") ? pop() + pop() : v.equals("-") ? -pop() + pop() : v.equals("*") ? pop() * pop() : v.equals("/") ? (int) (1. / pop() * pop()) : Integer.valueOf(v))).sum() == 0 ? 0 : pop();
+    }
+}
