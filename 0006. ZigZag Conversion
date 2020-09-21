@@ -1,0 +1,6 @@
+class Solution {
+
+    public String convert(String s, int numRows) {
+        return String.join("", IntStream.range(0, s.length()).boxed().reduce(Stream.generate(() -> "").limit(numRows).toArray(String[]::new), (t, u) -> (t[numRows - 1 - Math.abs(numRows - 1 - u % Math.max(1, 2 * numRows - 2))] += s.charAt(u)) == null ? t : t, (t, u) -> t));
+    }
+}
