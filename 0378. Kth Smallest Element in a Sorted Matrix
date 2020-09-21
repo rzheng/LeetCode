@@ -1,0 +1,6 @@
+class Solution {
+
+    public int kthSmallest(int[][] matrix, int k) {
+        return Stream.of(matrix).flatMapToInt(IntStream::of).sorted().skip(--k).findAny().orElse(0);
+    }
+}
