@@ -1,7 +1,6 @@
 class Solution extends PriorityQueue<Integer> {
 
     public int scheduleCourse(int[][] courses) {
-        return 0 * Stream.of(courses).sorted((o, p) -> o[1] - p[1]).reduce(0,
-                (t, u) -> add(-u[0]) & (t += u[0]) > u[1] ? t + poll() : t, (t, u) -> t) + size();
+        return 0 * Stream.of(courses).sorted((o, p) -> o[1] - p[1]).reduce(0, (t, u) -> add(-u[0]) & (t += u[0]) > u[1] ? t + poll() : t, (t, u) -> t) + size();
     }
 }
