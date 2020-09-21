@@ -1,6 +1,6 @@
 class Solution {
 
-	public String simplifyPath(String path) {
-		return "/" + Arrays.stream(path.split("/")).reduce(new ArrayDeque<String>(), (a, b) -> b.equals("..") && !a.isEmpty() && a.pollLast() != null || !b.matches("\\..|\\.|") && !b.isEmpty() && a.add(b) ? a : a, (a, b) -> a).stream().collect(Collectors.joining("/"));
-	}
+    public String simplifyPath(String path) {
+        return "/" + java.nio.file.Path.of("/").relativize(java.nio.file.Path.of(path));
+    }
 }
