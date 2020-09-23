@@ -1,0 +1,6 @@
+class Solution {
+
+    public int maximumGap(int[] nums) {
+        return IntStream.of(nums).sorted().map(o -> -nums[0] + (nums[0] = o)).max().orElse(0);
+    }
+}
