@@ -1,0 +1,6 @@
+class Solution extends HashMap<Integer, int[]> {
+
+    public int longestArithSeqLength(int[] A) {
+        return 1 + IntStream.range(0, A.length).flatMap(o -> IntStream.range(0, o).map(p -> computeIfAbsent(o, t -> new int[9999])[A[p] - A[o] + 999] = 1 + computeIfAbsent(p, t -> new int[9999])[A[p] - A[o] + 999])).max().orElse(0);
+    }
+}
