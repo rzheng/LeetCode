@@ -1,0 +1,14 @@
+class UndergroundSystem extends HashMap<Integer, List<Integer>> {
+
+    public void checkIn(int id, String stationName, int t) {
+        put(id, List.of(stationName.hashCode(), t));
+    }
+
+    public void checkOut(int id, String stationName, int t) {
+        computeIfAbsent(get(id).get(0) ^ stationName.hashCode(), u -> new ArrayList<>()).add(t - get(id).get(1));
+    }
+
+    public double getAverageTime(String startStation, String endStation) {
+        return get(startStation.hashCode() ^ endStation.hashCode()).stream().mapToInt(v -> v).average().orElse(0);
+    }
+}
