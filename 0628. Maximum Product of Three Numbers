@@ -1,0 +1,6 @@
+class Solution {
+
+    public int maximumProduct(int[] nums) {
+        return (nums = IntStream.of(nums).sorted().toArray())[nums.length - 1] * Math.max(nums[0] * nums[1], nums[nums.length - 2] * nums[nums.length - 3]);
+    }
+}
