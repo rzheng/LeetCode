@@ -1,0 +1,6 @@
+class Solution extends Stack<Integer> {
+
+    public boolean isPalindrome(ListNode head) {
+        return Stream.iterate(head, t -> t != null, t -> t.next).peek(t -> add(t.val)).count() < 1 | Stream.iterate(head, t -> t != null, t -> t.next).allMatch(t -> t.val == pop());
+    }
+}
