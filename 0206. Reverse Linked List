@@ -1,0 +1,6 @@
+class Solution {
+
+    public ListNode reverseList(ListNode head) {
+        return Stream.iterate(head, t -> t != null, t -> t.next).reduce(null, (t, u) -> new ListNode(u.val, t));
+    }
+}
