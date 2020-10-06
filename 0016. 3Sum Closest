@@ -1,0 +1,6 @@
+class Solution {
+
+    public int threeSumClosest(int[] nums, int target) {
+        return IntStream.range(0, nums.length).flatMap(v -> IntStream.range(1 + v, nums.length).flatMap(w -> IntStream.range(1 + w, nums.length).map(x -> nums[v] + nums[w] + nums[x]))).boxed().min((o, p) -> Math.abs(o - target) - Math.abs(p - target)).orElse(0);
+    }
+}
