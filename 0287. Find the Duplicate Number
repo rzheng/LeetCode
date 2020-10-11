@@ -1,0 +1,6 @@
+class Solution extends HashSet<Integer> {
+
+    public int findDuplicate(int[] nums) {
+        return IntStream.of(nums).filter(v -> !add(v)).findAny().orElse(0);
+    }
+}
