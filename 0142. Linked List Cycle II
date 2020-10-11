@@ -1,0 +1,6 @@
+class Solution extends HashSet<ListNode> {
+
+    public ListNode detectCycle(ListNode head) {
+        return Stream.iterate(head, t -> t != null, t -> t.next).filter(t -> !add(t)).findAny().orElse(null);
+    }
+}
