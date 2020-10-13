@@ -1,0 +1,6 @@
+class Solution extends ArrayList<String> {
+
+    public List<String> summaryRanges(int[] nums) {
+        return IntStream.range(0, nums.length).mapToObj(u -> nums[u] + 1 != nums[++u % nums.length] && add((nums[0] < nums[--u] ? nums[0] + "->" : "") + nums[u]) | (nums[0] = nums[++u % nums.length]) > 0 ? this : this).reduce(this, (t, u) -> t);
+    }
+}
