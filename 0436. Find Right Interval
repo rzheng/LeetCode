@@ -1,0 +1,6 @@
+class Solution extends TreeMap<Integer, Integer> {
+
+    public int[] findRightInterval(int[][] intervals) {
+        return IntStream.range(0, intervals.length).allMatch(v -> true | put(intervals[v][0], v) == put(99999, -1)) ? Stream.of(intervals).mapToInt(v -> get(ceilingKey(v[1]))).toArray() : new int[0];
+    }
+}
