@@ -1,0 +1,6 @@
+class Solution extends HashMap<Node, Node> {
+
+    public Node cloneGraph(Node node) {
+        return node == null | containsKey(node) || put(node, new Node(node.val)) == null | node.neighbors.stream().allMatch(t -> get(node).neighbors.add(cloneGraph(t))) ? get(node) : null;
+    }
+}
