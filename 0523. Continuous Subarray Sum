@@ -1,0 +1,6 @@
+class Solution {
+
+    public boolean checkSubarraySum(int[] nums, int k) {
+        return IntStream.range(0, nums.length - 1).flatMap(v -> IntStream.range(v + 1, nums.length).map(o -> nums[v] += nums[o])).anyMatch(v -> (k == 0 ? v : v % k) == 0);
+    }
+}
