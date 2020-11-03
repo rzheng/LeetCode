@@ -1,0 +1,6 @@
+class Solution {
+
+    public int[] prisonAfterNDays(int[] cells, int N) {
+        return Stream.iterate(cells, t -> IntStream.range(0, 8).map(o -> o > 0 & o < 7 && t[o - 1] == t[++o] ? 1 : 0).toArray()).skip(--N % 14 + 1).findAny().get();
+    }
+}
