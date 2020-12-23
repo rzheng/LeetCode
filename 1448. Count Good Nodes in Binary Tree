@@ -1,0 +1,6 @@
+class Solution {
+
+	public int goodNodes(TreeNode root, int... r) {
+		return root == null ? 0 : (r.length > 0 && r[0] > root.val ? 0 : 1) + goodNodes(root.left, Math.max(r.length > 0 ? r[0] : -9999, root.val)) + goodNodes(root.right, Math.max(r.length > 0 ? r[0] : -999, root.val));
+	}
+}
