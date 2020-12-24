@@ -1,0 +1,6 @@
+class Solution {
+
+	public int maxAreaOfIsland(int[][] grid, int... g) {
+		return g.length > 0 ? g[0] < 0 | g[0] >= grid.length | g[1] < 0 | g[1] >= grid[0].length || grid[g[0]][g[1]] < 1 ? 0 : 1 + maxAreaOfIsland(grid, g[grid[g[0]][g[1]] = 0] - 1, g[1]) + maxAreaOfIsland(grid, g[0], g[1] - 1) + maxAreaOfIsland(grid, g[0], g[1] + 1) + maxAreaOfIsland(grid, ++g[0], g[1]) : IntStream.range(0, grid.length).flatMap(v -> IntStream.range(0, grid[0].length).map(o -> maxAreaOfIsland(grid, v, o))).max().orElse(0);
+	}
+}
