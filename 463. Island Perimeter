@@ -1,0 +1,6 @@
+class Solution {
+
+	public int islandPerimeter(int[][] grid) {
+		return 2 * IntStream.range(0, grid.length).flatMap(v -> IntStream.range(0, grid[0].length).map(o -> grid[v][o] * (2 - (v > 0 ? grid[v - 1][o] : 0) - (o > 0 ? grid[v][o - 1] : 0)))).sum();
+	}
+}
